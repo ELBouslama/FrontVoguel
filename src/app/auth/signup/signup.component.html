@@ -1,0 +1,159 @@
+<mat-card class="signup-box" layout="row">
+  <img
+    class="logo-signup"
+    src="../../../assets//images/logo-login.png"
+    alt=""
+  />
+
+  <p></p>
+  <mat-card-title>Become a Client</mat-card-title>
+  <mat-card-content>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form
+      (submit)="onSignup(signupForm)"
+      #signupForm="ngForm"
+      *ngIf="!isLoading"
+    >
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            ngModel
+            #fnameInput="ngModel"
+            type="text"
+            name="firstName"
+            placeholder="first name"
+            required
+            minlength="3"
+          />
+          <mat-error *ngIf="fnameInput.invalid"
+            >Please enter first name 3 minimum length</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            ngModel
+            #lnameInput="ngModel"
+            type="text"
+            name="lastName"
+            placeholder="last name"
+            required
+            minlength="3"
+          />
+          <mat-error *ngIf="lnameInput.invalid"
+            >Please enter last name</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            ngModel
+            #emailInput="ngModel"
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            required
+            email
+          />
+          <mat-error *ngIf="emailInput.invalid"
+            >Please enter valid e-mail</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            ngModel
+            #phoneInput="ngModel"
+            type="number"
+            name="phoneNumber"
+            placeholder="phone number"
+            required
+            minlength="8"
+          />
+          <mat-error *ngIf="phoneInput.invalid"
+            >Please enter a 8 digit phone number</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Select account type</mat-label>
+          <mat-select
+            name="accountType"
+            matInput
+            ngModel
+            #accountInput="ngModel"
+            required
+          >
+            <mat-option>None</mat-option>
+            <mat-option value="BRONZE">BRONZE</mat-option>
+            <mat-option value="SILVER">SILVER</mat-option>
+            <mat-option value="GOLD">GOLD</mat-option>
+          </mat-select>
+          <mat-error *ngIf="accountInput.invalid"
+            >Please enter chose account type</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            ngModel
+            #passwordInput="ngModel"
+            type="password"
+            name="password"
+            minlength="4"
+            placeholder="Password"
+            required
+          />
+          <mat-error *ngIf="passwordInput.invalid"
+            >Password must be at least 6 characters</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            ngModel
+            #verifypasswordInput="ngModel"
+            type="password"
+            name="verifypassword"
+            minlength="4"
+            placeholder="Verify Password"
+            required
+          />
+          <mat-error
+            *ngIf="
+              verifypasswordInput.value != passwordInput.value &&
+              verifypasswordInput.dirty
+            "
+            >Unmatching passwords</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <div>
+        <button
+          [disabled]="signupForm.invalid"
+          mat-raised-button
+          color="red"
+          type="submit"
+          *ngIf="!isLoading"
+        >
+          Register
+        </button>
+        <mat-checkbox [checked]="true"
+          >I agree to the Terms and Conditions</mat-checkbox
+        >
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

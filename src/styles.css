@@ -1,0 +1,26 @@
+
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+ }
+
+ body::-webkit-scrollbar {
+  width: 0 !important;
+ }
+
+.bg {
+  background-image: url("./assets/images/bg2.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(255, 255, 0, 0.589);
+  color: black;
+  text-shadow: none;
+}
